@@ -5,7 +5,7 @@ import numpy as np
 
 class SpellChecker(object):
     def __init__(self, corpus_file_path) -> None:
-        with open(corpus_file_path,"r",encoding="mbcs") as file:
+        with open(corpus_file_path,"r",encoding="utf-8") as file:
             lines = file.readlines()
             words = []
             for line in lines:
