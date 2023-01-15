@@ -108,6 +108,7 @@
                     <ul>
                         {%if count < 7 %}
                         <li>{{j[0]}}</li>
+                        {% increment count %}
                         {%endif%}
                     </ul>
                     {%endfor%}
