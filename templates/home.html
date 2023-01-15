@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--<meta charset="UTF-8">-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+
+    <title>Shubham's Movie Recommendation System</title>
+    <link rel="stylesheet" href="https://cdjns.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/static/CSS/style.css">
+    <!--fonts-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css/css?family=Source+Code+Pro:400,900|Source+Sans+Pro:300,900&display=swap">
+    <script src="https://kit.fontawesome.com/01ae05f649.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="/static/logo.png" alt="logo I guess">
+        </div>
+        <button class="nav-toggle" aria-label="toggle navigation">
+            <span class="hamburger"></span>
+        </button>
+
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a href="index.html" class="nav__link">Home</a>
+                </li>
+                <li class="nav__item">
+                    <a href="index.html#services" class="nav__link">My Services</a>
+                </li>
+                <li class="nav__item">
+                    <a href="index.html#about" class="nav__link">About Me</a>
+                </li>
+                <li class="nav__item">
+                    <a href="index.html#work" class="nav__link">My Work</a>
+                </li>
+
+
+            </ul>
+        </nav>
+    </header>
+
+    <!--Introduction-->
+    <section class="intro" id="home">
+        <h1 class="section__title section__title--intro">
+            <strong>Spell checker</strong>
+        </h1>
+        <!--<p class="section__subtitle section__subtitle--intro">Content Based Recommendation</p>-->
+        <!--<img src="img/8.jpg" alt="monkey" class="intro__img">-->
+    </section>
+
+    <!--portfolio Item individual
+    <div class="portfolio-item-individual">
+        <div class='input_select'>
+            <label for="movies">Please Enter Movie Name</label><br>
+            <form action="/" method='POST'>
+                {%if mv_names|length>1%}
+                <input list='mname' name='mname' class="input_selet-item" aria-label="input" value='{{selected_movie}}'>
+                {%else%}
+                <input list='mname' name='mname' class="input_selet-item" aria-label="input">
+                {%endif%}            
+                <datalist id='mname'>
+                        {% for movie in movie_list %}
+                            <option value='{{movie}}'>
+                        {% endfor %}
+                    </datalist>
+                <br>
+                <a href='#work'>
+                <input type='submit' class="btn" value='Recommend me more'>
+                </a>
+            </form>
+        </div>
+        #<select name="movie" id="movie" aria-label="movie_selection">
+            <option value="select_movie" selected>Select Movie</option>
+            {% for movie in movie_list %}
+            <option value="Avatar">{{ movie }}</option>
+            {% endfor %}    
+        </select>
+    -->
+    <div class="portfolio-item-individual">
+        <div class='input_select'>
+            <form action="/" method='POST'>
+                <!--<p><label for="movies">Review of W3Schools:</label></p>-->
+                <textarea id="mname" name="mname" rows="4" cols="50" placeholder="Write Your words"></textarea>
+                <br>            
+                
+                <a href='#work'>
+                <input type='submit' class="btn" value='Check'>
+                </a>
+            </form>
+        </div>
+    </div>
+    
+    <section class="my-work" id="work">
+        <ol>
+        {% block content %}{% endblock %}
+        {%for i in words%}
+       
+    
+                 <li>Word Found :&nbsp;&nbsp;{{i[0]}} <br> Solution ->&nbsp;
+                    {%if "spelled" in i[1]%} 
+                    {{i[1]}}
+                    {%elif "not found" in i[1]%}
+                    {{i[1]}}
+                    {%else%}
+                    <br>
+                    {%for j in i[1]%}
+                    <ul>
+                        <li>{{j[0]}}</li>
+                    </ul>
+                    {%endfor%}
+                    {%endif%}
+                </li>
+  
+        {%endfor%}
+        
+    </ol>
+    </section>
+    
+
+    <!--Footer-->
+    <footer class="footer ">
+        <a href="mailto:shubham.c.jagtap@gmail.com " class="footer__link ">shubham.c.jagtap@gmail.com</a>
+        <ul class="social-list ">
+            <li class="social-list__item ">
+                <a href="https://github.com/ShubhamCJagtap " class="social-list__item " aria-label="a">
+                    <i class="fa-brands fa-github "></i>
+                </a>
+            </li>
+            <li class="social-list__item ">
+                <a href="https://www.linkedin.com/in/shubham-jagtap-scj4497/ " class="social-list__item " aria-label="b">
+                    <i class="fa-brands fa-linkedin "></i>
+                </a>
+            </li>
+            <li class="social-list__item ">
+                <a href="https://www.kaggle.com/ " class="social-list__item " aria-label="c">
+                    <i class="fa-brands fa-kaggle "></i>
+                </a>
+            </li>
+            <li class="social-list__item ">
+                <a href="https://www.hackerrank.com/dashboard " class="social-list__item " aria-label="d">
+                    <i class="fa-brands fa-hackerrank "></i>
+                </a>
+            </li>
+        </ul>
+    </footer>
+
+    
+    <div class='loader-wrapper' id='loader-wrapper'>
+        <div class="loader">
+
+        </div>
+    </div>
+    <script src="/static/js/index.js ">
+    </script>
+
+</body>
+
+</html>
