@@ -103,9 +103,12 @@
                     {{i[1]}}
                     {%else%}
                     <br>
+                    {% assign count = 0%}
                     {%for j in i[1] limit:6%}
                     <ul>
+                        {%if count < 7 %}
                         <li>{{j[0]}}</li>
+                        {%endif%}
                     </ul>
                     {%endfor%}
                     {%endif%}
