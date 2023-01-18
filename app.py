@@ -14,22 +14,31 @@ def create_app():
 
     @app.route("/",methods=['POST','GET'])
     def home():
+        words = []
         if request.method=='POST':
             mname = request.form.get('mname')
             if mname=='':
                 words = ''
-                return render_template('home.html',words=words)
-            words = []
+                return render_template('home.html',words=words)  
+    
             for word in mname.split(' '):
+                all_sggestions = []
                 print(word)
                 if word != '':
                     for i in replacer:
                         word = word.replace(i,"")
-                    words.append((word,checker.check(word.lower())))
-                print(words)
+                    all_sggestions = (checker.check(word.lower()))
+                    print(all_sggestions)
+                if "spelled" in all_sggestions:
+                    words.append((word,all_sggestions))
+                elif "not found" in all_sggestions:
+                    words.append((word,all_sggestions))
+                else:
+                    words.append((word,all_sggestions[:5]))
+        print(words)
         return render_template('home.html',words=words)
     return app
 
-# create_app()
+create_app()
 # if __name__=="__main__":
 #     app.run()

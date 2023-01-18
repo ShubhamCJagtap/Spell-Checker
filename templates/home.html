@@ -30,7 +30,7 @@
         <nav class="nav">
             <ul class="nav__list">
                 <li class="nav__item">
-                    <a href="https://shubhamc-jagtap.web.app" class="nav__link">Shubham's Portfolio</a>
+                    <a href="https://shubhamjagtap.web.app" class="nav__link">Shubham's Portfolio</a>
                 </li>
        
 
@@ -80,7 +80,7 @@
         <div class='input_select'>
             <form action="/" method='POST'>
                 <!--<p><label for="movies">Review of W3Schools:</label></p>-->
-                <textarea id="mname" name="mname" rows="4" cols="50" placeholder="Write Your words"></textarea>
+                <textarea class="input_words" id="mname" name="mname" rows="4" cols="50" placeholder="Write Your words"></textarea>
                 <br>            
                 
                 <a href='#work'>
@@ -105,12 +105,17 @@
                     <br>
                    
                     {%for j in i[1]%}
+                    
                     <ul>
-                       
+                        {%if "spelled" in j%} 
+                        {{j}}
+                        {%elif "not found" in j%}
+                        {{j}}
+                        {%else%}
                         <li>{{j[0]}}</li>
-                      
-                     
+                        {%endif%}
                     </ul>
+                    
                     {%endfor%}
                     {%endif%}
                 </li>
